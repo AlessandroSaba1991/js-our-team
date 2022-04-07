@@ -43,27 +43,46 @@ const team = [{
 
 const element_row = document.querySelector('.row')
 
-for (let i = 0; i < team.length; i++) {
+stamp_list(team)
 
-    const member = team[i];
-    const element_col = document.createElement('div')
-    element_col.classList.add('col')
-    const element_card = document.createElement('div')
-    element_card.classList.add('member_card')
-    const element_card_image = document.createElement('div')
-    const element_image = document.createElement('img')
-    element_image.setAttribute("src", `./assets/img/${member.image}`)
-    element_card_image.append(element_image)
-    const element_card_text = document.createElement('div')
-    element_card_text.classList.add('p-3')
-    const element_h3 = document.createElement('h3')
-    element_h3.append(member.name)
-    const element_p = document.createElement('p')
-    element_p.classList.add('mb-0')
-    element_p.append(member.role)
-    element_card_text.append(element_h3, element_p)
-    element_card.append(element_card_image, element_card_text)
-    element_col.append(element_card)
-    element_row.append(element_col)
+const element_form = document.querySelector('form')
+element_form.addEventListener('submit', function(event) {
+    event.preventDefault()
+    element_row.innerHTML = ''
+    const new_member = {}
+    new_member.name = document.getElementById('nome').value
+    new_member.role = document.getElementById('role').value
+    new_member.image = document.getElementById('img').value
+    team.push(new_member)
+    stamp_list(team)
+
+})
+
+function stamp_list(list) {
+
+    for (let i = 0; i < list.length; i++) {
+
+        const member = list[i];
+        const element_col = document.createElement('div')
+        element_col.classList.add('col')
+        const element_card = document.createElement('div')
+        element_card.classList.add('member_card')
+        const element_card_image = document.createElement('div')
+        const element_image = document.createElement('img')
+        element_image.setAttribute("src", `./assets/img/${member.image}`)
+        element_card_image.append(element_image)
+        const element_card_text = document.createElement('div')
+        element_card_text.classList.add('p-3')
+        const element_h3 = document.createElement('h3')
+        element_h3.append(member.name)
+        const element_p = document.createElement('p')
+        element_p.classList.add('mb-0')
+        element_p.append(member.role)
+        element_card_text.append(element_h3, element_p)
+        element_card.append(element_card_image, element_card_text)
+        element_col.append(element_card)
+        element_row.append(element_col)
+
+    }
 
 }

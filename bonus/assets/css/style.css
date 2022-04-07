@@ -10,8 +10,23 @@ body {
 
 img {
     width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 1rem;
 }
 
 .member_card {
     background-color: white;
+}
+
+.container_little {
+    width: 600px;
+    margin: 0 auto;
 }
