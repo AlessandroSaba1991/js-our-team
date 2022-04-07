@@ -40,13 +40,27 @@ const team = [{
         image: 'barbara-ramos-graphic-designer.jpg',
     },
 ];
+
+const element_container = document.querySelector('.container')
 let c = 1
 
 for (let i = 0; i < team.length; i++) {
+
     const member = team[i];
+    const element_member = document.createElement('div')
+    element_member.append(`Member N*${c} Information  `)
+    element_container.append(element_member)
+
+    for (let key in member) {
+        const element_info = document.createElement('div')
+        element_info.append(` ${key} ${member[key]}`)
+        element_container.append(element_info)
+    }
+    /* 
     console.log(`Member N*${c} Information`);
     console.log(member.name);
     console.log(member.role);
-    console.log(member.image);
+    console.log(member.image); 
+    */
     c++
 }
