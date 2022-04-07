@@ -41,26 +41,50 @@ const team = [{
     },
 ];
 
+//seleziono l'elemento della dom
 const element_container = document.querySelector('.container')
+
+//inizializzo una variabile a 1 che verrà incrementata ad ogni ciclo e la utilizzo per segnare i vari membri   
 let c = 1
 
+//ciclo l'array per prendewre i singoli oggetti
 for (let i = 0; i < team.length; i++) {
 
+    //assegno il singolo oggetto ad una variabile
     const member = team[i];
+
+    //creo un elemento nella dom per inserire il titolino
     const element_member = document.createElement('div')
+
+    //appendo il titolino con la variabile 
     element_member.append(`Member N*${c} Information  `)
+
+    //appendo l'elemento creato all'elemento della dom
     element_container.append(element_member)
 
+    /************ 
+     (Metodo 1)
+     ************/
+
+    //ciclo l'oggetto così posso estrapolare gli attributi 
     for (let key in member) {
+
+        //creo un div per la descrizione
         const element_info = document.createElement('div')
+
+        //gli attacco tutti gli attributi
         element_info.append(` ${key} ${member[key]}`)
+
+        //e lo attacco al container nella dom
         element_container.append(element_info)
     }
-    /* 
+    //incremento variabile
+    c++
+
+    /* Metodo 2 prendevo gli attributi con member.name etcetc
     console.log(`Member N*${c} Information`);
     console.log(member.name);
     console.log(member.role);
     console.log(member.image); 
     */
-    c++
 }
