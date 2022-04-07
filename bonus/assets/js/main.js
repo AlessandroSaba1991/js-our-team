@@ -41,22 +41,29 @@ const team = [{
     },
 ];
 
-const element_container = document.querySelector('.container')
-let c = 1
+const element_row = document.querySelector('.row')
 
 for (let i = 0; i < team.length; i++) {
 
     const member = team[i];
-    const element_member = document.createElement('div')
-    element_member.insertAdjacentHTML('beforeend', `<img src="./assets/img/${member.image}" alt="">`)
-    element_container.append(element_member)
+    const element_col = document.createElement('div')
+    element_col.classList.add('col')
+    const element_card = document.createElement('div')
+    element_card.classList.add('member_card')
+    const element_card_image = document.createElement('div')
+    const element_image = document.createElement('img')
+    element_image.setAttribute("src", `./assets/img/${member.image}`)
+    element_card_image.append(element_image)
+    const element_card_text = document.createElement('div')
+    element_card_text.classList.add('p-3')
+    const element_h3 = document.createElement('h3')
+    element_h3.append(member.name)
+    const element_p = document.createElement('p')
+    element_p.classList.add('mb-0')
+    element_p.append(member.role)
+    element_card_text.append(element_h3, element_p)
+    element_card.append(element_card_image, element_card_text)
+    element_col.append(element_card)
+    element_row.append(element_col)
 
-
-    /* 
-    console.log(`Member N*${c} Information`);
-    console.log(member.name);
-    console.log(member.role);
-    console.log(member.image); 
-    */
-    c++
 }
