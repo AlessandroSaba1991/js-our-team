@@ -41,11 +41,9 @@ const team = [{
     },
 ];
 
-//seleziono l'elemento della dom
-const element_row = document.querySelector('.row')
 
 //faccio partire la funzione per stampare a schermo la lista
-stamp_list(team)
+stamp_list(team, '.row')
 
 //seleziono il form e resto in ascolto per l'evento click che dovrebbe generare un nuovo membro
 const element_form = document.querySelector('form')
@@ -53,9 +51,6 @@ element_form.addEventListener('submit', function(event) {
 
     //evito il refresh della pagina
     event.preventDefault()
-
-    //pulisco la dom
-    element_row.innerHTML = ''
 
     //dichiaro il nuovo oggetto
     const new_member = {}
@@ -69,7 +64,12 @@ element_form.addEventListener('submit', function(event) {
     team.push(new_member)
 
     //stampo la lista aggiornata
-    stamp_list(team)
+    stamp_list(team, '.row')
+
+    //ripulisco gli input
+    event.target[0].value = ''
+    event.target[1].value = ''
+    event.target[2].value = ''
 
 })
 
@@ -77,7 +77,13 @@ element_form.addEventListener('submit', function(event) {
  * ### stampa a schermo una card per ogni oggetto della lista   
  * @param {Array} list lista di oggetti
  */
-function stamp_list(list) {
+function stamp_list(list, css_selector) {
+
+    //seleziono l'elemento della dom
+    const element_row = document.querySelector(css_selector)
+
+    //pulisco la dom
+    element_row.innerHTML = ''
 
     //ciclo per selezionare il singolo oggetto dalla lista
     for (let i = 0; i < list.length; i++) {
